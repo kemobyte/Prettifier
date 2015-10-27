@@ -1,0 +1,36 @@
+﻿@model Prettifier.Models.PrettifiedNumbers
+
+@{
+    ViewBag.Title = "Prettify";
+}
+
+<script>
+  var CurrentUserID = '@(ViewBag.UserId)';
+</script>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "__AjaxAntiForgeryForm" }))
+{
+    @Html.AntiForgeryToken()
+}
+
+<h2>Prettify Some Numbers!</h2>
+
+<div class="row" style="align-content:center">
+    <div class="col-md-6">
+        <h2>Enter Some Text</h2>
+        @Html.TextArea("OrginalText", new { oninput = "Prettifier.prettify(this.value)", id = "OrginalTextArea", @TextMode = "TextBoxMode.MultiLine", @cols = "60", @rows = "5", style = "width: 100%; max-width: 100%;", @class = "form-control" })
+    </div>
+    <div class="col-md-6">
+        <h2>Prettified Text</h2>
+        @Html.TextArea("PrettifiedText", new { id = "PrettifiedTextArea", @TextMode = "TextBoxMode.MultiLine", @disabled = "true", @cols = "60", @rows = "5", @style = "width: 100%; max-width: 100%;", @class = "form-control" })
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Show my Prettified Numbers", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="@Url.Content("~/Scripts/Prettifier.js")"></script>
+}

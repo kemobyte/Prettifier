@@ -1,0 +1,79 @@
+﻿@model Prettifier.Models.ReportViewModel
+@{
+    Layout = null;
+}
+
+<style type="text/css">
+    body {
+        font-family: Tahoma;
+    }
+
+    h2 {
+        color: red;
+    }
+
+    table {
+        border: 1px solid black;
+        border-spacing: 0;
+    }
+
+    td {
+        color: green;
+        font-size: .8em;
+        padding: 5px;
+    }
+
+    .heading {
+        background: #ccc;
+    }
+</style>
+
+<h2>Prettifier Report</h2>
+
+<table>
+    <tr class="heading">
+        <th>
+            @Html.DisplayNameFor(model => model.TopMostUsedPrettifiedNumbers)
+        </th>
+
+        <th></th>
+    </tr>
+    @foreach (var item in Model.TopMostUsedPrettifiedNumbers)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item)
+            </td>
+        </tr>
+    }
+</table>
+
+<table>
+    <tr class="heading">
+        <th>
+            @Html.DisplayNameFor(model => model.PrettifiedNumbersByUsers)
+        </th>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PrettifiedNumbersByUsers[0].Email)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.PrettifiedNumbersByUsers[0].PrettifiedNumbersCount)
+        </th>
+
+        <th></th>
+    </tr>
+    @foreach (var item in Model.PrettifiedNumbersByUsers)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrettifiedNumbersCount)
+            </td>
+        </tr>
+    }
+</table>

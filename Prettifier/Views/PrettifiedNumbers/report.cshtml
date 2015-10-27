@@ -1,0 +1,60 @@
+﻿@model Prettifier.Models.ReportViewModel
+@{
+    ViewBag.Title = "report";
+}
+
+<h2>Report</h2>
+
+<p>
+    @Html.ActionLink("Export To PDF", "ExportPdf",null, new { target = "_blank"}) | 
+
+    @Html.ActionLink("Export To EXCEL", "ExportExcel")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TopMostUsedPrettifiedNumbers)
+        </th>
+
+        <th></th>
+    </tr>
+    @foreach (var item in Model.TopMostUsedPrettifiedNumbers)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item)
+            </td>
+        </tr>
+    }
+</table>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PrettifiedNumbersByUsers)
+        </th>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PrettifiedNumbersByUsers[0].Email)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.PrettifiedNumbersByUsers[0].PrettifiedNumbersCount)
+        </th>
+
+        <th></th>
+    </tr>
+    @foreach (var item in Model.PrettifiedNumbersByUsers)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrettifiedNumbersCount)
+            </td>
+        </tr>
+    }
+</table>

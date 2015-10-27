@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Prettifier.Models.PrettifiedNumbers>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Prettify", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrginalNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrettifiedNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrettifiedCategory)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrginalNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrettifiedNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrettifiedCategory)
+        </td>
+    </tr>
+}
+</table>
